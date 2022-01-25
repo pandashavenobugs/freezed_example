@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_example/models/job/job.model.dart';
+import 'package:freezed_example/models/user/user.model.dart';
 
 void main() {
   runApp(const MyApp());
+  const userA = User(name: 'cengiz', age: 25, jobs: [Job(level: 1)]);
+  final json = userA.toJson();
+
+  print('json version $json');
+  print('object version ${User.fromJson(json)}');
 }
 
 class MyApp extends StatelessWidget {
