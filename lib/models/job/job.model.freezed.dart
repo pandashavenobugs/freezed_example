@@ -14,6 +14,10 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
+Job _$JobFromJson(Map<String, dynamic> json) {
+  return _Job.fromJson(json);
+}
+
 /// @nodoc
 class _$JobTearOff {
   const _$JobTearOff();
@@ -23,6 +27,10 @@ class _$JobTearOff {
       title: title,
       level: level,
     );
+  }
+
+  Job fromJson(Map<String, Object?> json) {
+    return Job.fromJson(json);
   }
 }
 
@@ -34,6 +42,7 @@ mixin _$Job {
   String? get title => throw _privateConstructorUsedError;
   int get level => throw _privateConstructorUsedError;
 
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $JobCopyWith<Job> get copyWith => throw _privateConstructorUsedError;
 }
@@ -107,9 +116,11 @@ class __$JobCopyWithImpl<$Res> extends _$JobCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
+@JsonSerializable()
 class _$_Job extends _Job {
   const _$_Job({this.title = "developer", required this.level}) : super._();
+
+  factory _$_Job.fromJson(Map<String, dynamic> json) => _$$_JobFromJson(json);
 
   @JsonKey()
   @override
@@ -141,11 +152,18 @@ class _$_Job extends _Job {
   @override
   _$JobCopyWith<_Job> get copyWith =>
       __$JobCopyWithImpl<_Job>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_JobToJson(this);
+  }
 }
 
 abstract class _Job extends Job {
   const factory _Job({String? title, required int level}) = _$_Job;
   const _Job._() : super._();
+
+  factory _Job.fromJson(Map<String, dynamic> json) = _$_Job.fromJson;
 
   @override
   String? get title;
