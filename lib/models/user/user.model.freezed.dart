@@ -22,10 +22,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
 class _$UserTearOff {
   const _$UserTearOff();
 
-  _User call({String? name, int? age}) {
+  _User call({String? name, int? age, List<Job>? jobs}) {
     return _User(
       name: name,
       age: age,
+      jobs: jobs,
     );
   }
 
@@ -41,6 +42,7 @@ const $User = _$UserTearOff();
 mixin _$User {
   String? get name => throw _privateConstructorUsedError;
   int? get age => throw _privateConstructorUsedError;
+  List<Job>? get jobs => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,7 +53,7 @@ mixin _$User {
 abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res>;
-  $Res call({String? name, int? age});
+  $Res call({String? name, int? age, List<Job>? jobs});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
   $Res call({
     Object? name = freezed,
     Object? age = freezed,
+    Object? jobs = freezed,
   }) {
     return _then(_value.copyWith(
       name: name == freezed
@@ -76,6 +79,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int?,
+      jobs: jobs == freezed
+          ? _value.jobs
+          : jobs // ignore: cast_nullable_to_non_nullable
+              as List<Job>?,
     ));
   }
 }
@@ -85,7 +92,7 @@ abstract class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   factory _$UserCopyWith(_User value, $Res Function(_User) then) =
       __$UserCopyWithImpl<$Res>;
   @override
-  $Res call({String? name, int? age});
+  $Res call({String? name, int? age, List<Job>? jobs});
 }
 
 /// @nodoc
@@ -101,6 +108,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
   $Res call({
     Object? name = freezed,
     Object? age = freezed,
+    Object? jobs = freezed,
   }) {
     return _then(_User(
       name: name == freezed
@@ -111,6 +119,10 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
           ? _value.age
           : age // ignore: cast_nullable_to_non_nullable
               as int?,
+      jobs: jobs == freezed
+          ? _value.jobs
+          : jobs // ignore: cast_nullable_to_non_nullable
+              as List<Job>?,
     ));
   }
 }
@@ -119,7 +131,7 @@ class __$UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 @JsonSerializable(explicitToJson: true)
 class _$_User extends _User {
-  const _$_User({this.name, this.age}) : super._();
+  const _$_User({this.name, this.age, this.jobs}) : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
@@ -127,10 +139,12 @@ class _$_User extends _User {
   final String? name;
   @override
   final int? age;
+  @override
+  final List<Job>? jobs;
 
   @override
   String toString() {
-    return 'User(name: $name, age: $age)';
+    return 'User(name: $name, age: $age, jobs: $jobs)';
   }
 
   @override
@@ -139,14 +153,16 @@ class _$_User extends _User {
         (other.runtimeType == runtimeType &&
             other is _User &&
             const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.age, age));
+            const DeepCollectionEquality().equals(other.age, age) &&
+            const DeepCollectionEquality().equals(other.jobs, jobs));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(age));
+      const DeepCollectionEquality().hash(age),
+      const DeepCollectionEquality().hash(jobs));
 
   @JsonKey(ignore: true)
   @override
@@ -160,7 +176,7 @@ class _$_User extends _User {
 }
 
 abstract class _User extends User {
-  const factory _User({String? name, int? age}) = _$_User;
+  const factory _User({String? name, int? age, List<Job>? jobs}) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -169,6 +185,8 @@ abstract class _User extends User {
   String? get name;
   @override
   int? get age;
+  @override
+  List<Job>? get jobs;
   @override
   @JsonKey(ignore: true)
   _$UserCopyWith<_User> get copyWith => throw _privateConstructorUsedError;
